@@ -271,6 +271,9 @@ Prevented SQL injection by using Drizzle schema columns and parameterized querie
 
 Defaults for column and direction ensure queries always succeed.
 
+When reviewing after a break, I noticed the schema for specialites was not correct so I implemented that fix. 
+I also removed sorting from that column because there were intricacies that needed to be worked out. 
+
 Overall Improvements:
 
 + Flexible, searchable, and sortable API.
