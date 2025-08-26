@@ -38,14 +38,15 @@ export interface GetAdvocatesOptions {
         .select()
         .from(advocates)
         .where(
-          keyword
-            ? sql`LOWER(${advocates.firstName}) LIKE ${k} 
-                OR LOWER(${advocates.lastName}) LIKE ${k} 
-                OR LOWER(${advocates.city}) LIKE ${k} 
-                OR LOWER(${advocates.degree}) LIKE ${k} 
-                OR ${advocates.specialties}::text LIKE ${k}
-                OR ${advocates.phoneNumber}::text LIKE ${k}
-                OR ${advocates.yearsOfExperience}::text LIKE ${k}`
+            keyword
+            ? sql`
+              LOWER(${advocates.firstName}) LIKE ${k}
+              OR LOWER(${advocates.lastName}) LIKE ${k}
+              OR LOWER(${advocates.city}) LIKE ${k}
+              OR LOWER(${advocates.degree}) LIKE ${k}
+              OR ${advocates.specialties}::text ILIKE ${k}
+              OR ${advocates.phoneNumber}::text LIKE ${k}
+              OR ${advocates.yearsOfExperience}::text LIKE ${k}`
             : undefined
         )
         .orderBy(direction)
