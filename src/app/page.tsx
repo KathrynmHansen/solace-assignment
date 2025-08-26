@@ -88,6 +88,8 @@ export default function Home() {
     { key: "yearsOfExperience", label: "Experience" },
     { key: "phoneNumber", label: "Phone" },
   ];
+  //sorting by specialities is a bit more complicated (do you sort alphabetically, or by amount of specialites) so i removed it for now
+  const doNotSort:string = "Specialties"
 
   return (
     <main className="max-w-6xl mx-auto p-8 bg-gray-50 min-h-screen">
@@ -124,18 +126,28 @@ export default function Home() {
           <thead className="bg-indigo-50 sticky top-0 z-10">
             <tr>
               {columns.map(({ key, label }) => (
-                <th
-                  key={key}
-                  onClick={() => handleSort(key)}
-                  className={`px-4 py-3 font-semibold text-gray-700 cursor-pointer select-none ${
-                    sortConfig?.key === key ? "bg-indigo-100" : ""
-                  }`}
-                >
-                  <div className="flex items-center gap-1">
+                label === doNotSort ? (
+                  <th 
+                    key={key}
+                    className={`px-4 py-3 font-semibold text-gray-700 cursor-pointer select-none ${
+                      sortConfig?.key === key ? "bg-indigo-100" : ""
+                    }`}>
                     <span>{label}</span>
-                    <SortIcon column={key} />
-                  </div>
-                </th>
+                  </th>
+                ) : (
+                  <th
+                    key={key}
+                    onClick={() => handleSort(key)}
+                    className={`px-4 py-3 font-semibold text-gray-700 cursor-pointer select-none ${
+                      sortConfig?.key === key ? "bg-indigo-100" : ""
+                    }`}
+                  >
+                    <div className="flex items-center gap-1">
+                      <span>{label}</span>
+                      <SortIcon column={key} />
+                    </div>
+                  </th>
+                )
               ))}
             </tr>
           </thead>
