@@ -40,10 +40,10 @@ export interface GetAdvocatesOptions {
         .where(
             keyword
             ? sql`
-              LOWER(${advocates.firstName}) LIKE ${k}
-              OR LOWER(${advocates.lastName}) LIKE ${k}
-              OR LOWER(${advocates.city}) LIKE ${k}
-              OR LOWER(${advocates.degree}) LIKE ${k}
+              ${advocates.firstName} ILIKE ${k}
+              OR ${advocates.lastName} ILIKE ${k}
+              OR ${advocates.city} ILIKE ${k}
+              OR ${advocates.degree} ILIKE ${k}
               OR ${advocates.specialties}::text ILIKE ${k}
               OR ${advocates.phoneNumber}::text LIKE ${k}
               OR ${advocates.yearsOfExperience}::text LIKE ${k}`
