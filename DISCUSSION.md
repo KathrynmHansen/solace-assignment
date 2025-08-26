@@ -300,4 +300,6 @@ Accessibility improvements (keyboard navigation, ARIA labels).
 
 Export table data to CSV/Excel.
 
+Limits on database need to be set up.
+
 Add tests - I started to but ran out of time.

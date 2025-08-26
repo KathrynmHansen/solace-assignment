@@ -2,17 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { ArrowUpDown, ArrowUp, ArrowDown, Loader2 } from "lucide-react";
-
-type Advocate = {
-  id: string;
-  firstName: string;
-  lastName: string;
-  city: string;
-  degree: string;
-  specialties: string[];
-  yearsOfExperience: string;
-  phoneNumber: string;
-};
+import { Advocate } from "./types/advocates";
 
 export default function Home() {
   const [advocates, setAdvocates] = useState<Advocate[]>([]);
